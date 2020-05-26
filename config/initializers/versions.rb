@@ -1,5 +1,7 @@
-VERSION = '0.1.0'
+class Guru
+  VERSION = '0.1.0'
 
-def TestGuru.version
-  VERSION
+  def self.version
+    VERSION
+  end
 end
