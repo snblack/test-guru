@@ -6,5 +6,8 @@ class CreateUsers < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
+    change_column_null(:users, :first_name, false)
+    
   end
 end
