@@ -1,20 +1,16 @@
 class CreateTests < ActiveRecord::Migration[6.0]
   def change
     create_table :tests do |t|
-      t.string :title
-      t.integer :level
+      t.string :title, :null => false
+      t.integer :level, default: 1
       t.integer :user_id
 
-
+      t.index :user_id
+      t.foreign_key(:users, column: :user_id, primary_key: "id")
 
       t.timestamps
+
+
     end
-
-    add_index :tests, :user_id
-    add_foreign_key :tests, :users
-    
-    change_column_null(:tests, :title, false)
-    change_column_default(:tests, :level, from: nil, to: 1)
-
   end
 end
