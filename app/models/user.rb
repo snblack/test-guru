@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  has_many :tests, through: :tests_users
+  has_many :tests_created_author, class_name: "Test"
+  has_many :tests_users
+
+
   def tests_with_level(level)
     Test.joins('JOIN reports ON reports.test_id = tests.id').
          joins('JOIN users ON users.id = reports.user_id').
