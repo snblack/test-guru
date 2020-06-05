@@ -18,6 +18,9 @@ cat3 = Category.create(title: 'Физика')
 cat4 = Category.create(title: 'История')
 cat5 = Category.create(title: 'Статистика')
 
+user1 = User.create(first_name: 'Татьяна', last_name: 'Трубчик')
+user2 = User.create(first_name: 'Александр', last_name: 'Черняк')
+
 test1 = Test.create(title: 'Ruby Start', level: 1, category_id: cat1.id, user_id: user1.id)
 test2 = Test.create(title: 'Ruby Basic', level: 2, category_id: cat2.id)
 test3 = Test.create(title: 'Ruby Advanse', level: 3, category_id: cat3.id)
@@ -50,10 +53,6 @@ Answer.create(body: '1915', correct: false, question_id: question4.id)
 Answer.create(body: '2019', correct: true, question_id: question5.id)
 Answer.create(body: '1515', correct: false, question_id: question5.id)
 Answer.create(body: '2001', correct: false, question_id: question5.id)
-
-
-user1 = User.create(first_name: 'Татьяна', last_name: 'Трубчик')
-user2 = User.create(first_name: 'Александр', last_name: 'Черняк')
 
 Report.create(test_id: test1.id, user_id: user1.id, status: 'Прошел')
 Report.create(test_id: test2.id, user_id: user1.id, status: 'В процессе')

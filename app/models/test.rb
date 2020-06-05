@@ -4,11 +4,18 @@ class Test < ApplicationRecord
   has_many :questions
   has_many :tests_users
   has_many :users, through: :tests_users
+  validates :title, presence: true
+  validates :title, uniqueness: { scope: :level,
+    message: "should be unique with this level" }
+  validates :level, numericality: { only_integer: true, greater_than: 0, less_than: 10}
 
+  scope :easy, -> {where(level: 0..1)}
+  scope :middle, -> {where(level: 2..4)}
+  scope :heavy, -> {where(level: 5..Float::INFINITY)}
 
-  def self.test_with_category(category)
-    Test.joins('JOIN categories ON categories.id = tests.category_id').
-         where("categories.title = :category", category: category).
-         order('tests.title DESC')
-  end
+  scope :test_with_category, -> (category) {
+    joins('JOIN categories ON categories.id = tests.category_id').
+    where("categories.title = :category", category: category).
+    order('tests.title DESC')
+  }
 end
