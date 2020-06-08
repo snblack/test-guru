@@ -28,8 +28,8 @@ test3 = Test.create(title: 'Ruby Advanse', level: 3, category_id: cat3.id, user_
 test4 = Test.create(title: 'Великая отечественная война', level: 2, category_id: cat4.id, user_id: user2.id)
 test5 = Test.create(title: 'Черные дыры', level: 5, category_id: cat5.id, user_id: user2.id)
 
-question1 = Question.create(body: 'Как метод выводить текст в консоль?', test_id: test1.id)
-question2 = Question.create(body: 'Как создается хэш?', test_id: test2.id)
+question1 = Question.create(body: 'Какой метод выводит текст в консоль?', test_id: test1.id)
+question2 = Question.create(body: 'Как создается хэш?', test_id: test1.id)
 question3 = Question.create(body: 'Какой код подгружает посевные дынне в базу данных?', test_id: test3.id)
 question4 = Question.create(body: 'В каком году началась Великая отечественная война?', test_id: test4.id)
 question5 = Question.create(body: 'В каком году впервые была сфотографирована сверхмассивная
