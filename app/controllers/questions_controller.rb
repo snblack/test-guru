@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   before_action :find_test, only: %i[index create]
 
   def index
-    @questions = @test.question
+    @questions = @test.questions
   end
   # /questions/:id(.:format)
   def show
