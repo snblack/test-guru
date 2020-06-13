@@ -43,6 +43,7 @@ class QuestionsController < ApplicationController
     find_question
     @test_id = @question.test_id
     @question.destroy
+    redirect_to "/tests/#{@test_id}"
   end
 
   private

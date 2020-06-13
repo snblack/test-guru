@@ -11,6 +11,4 @@ class TestsController < ApplicationController
     @questions = @test.questions
   end
 
-
-
 end
