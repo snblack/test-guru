@@ -1,8 +1,7 @@
 class QuestionsController < ApplicationController
   # /tests/:test_id/questions(.:format)
 
-  before_action :find_test, only: %i[index create destroy]
-  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
+  before_action :find_test, only: %i[index create]
 
   def index
     @questions = @test.questions
@@ -13,6 +12,12 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    find_test
+    @question = Question.new
+  end
+
+  def edit
+    find_question
   end
 
   def create
@@ -24,11 +29,21 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # /questions/:id
+  def update
+    find_question
+
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render :edit
+    end
+  end
+
   def destroy
     find_question
+    @test_id = @question.test_id
     @question.destroy
-    redirect_to "/tests/#{@test.id}/questions/"
+    redirect_to "/tests/#{@test_id}"
   end
 
   private
