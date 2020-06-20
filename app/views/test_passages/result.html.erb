@@ -1,0 +1,11 @@
+<h1> The <%=  @test_passage.test.title %> Test was Competed!</h1>
+
+  <% if @test_passage.result >= 85 %>
+      <p> Ваш результат: <span class="result_green"><%= @test_passage.result %>%</span></p>
+      <p>Тест пройден успешно</p>
+  <% else %>
+      <p> Ваш результат: <span class="result_red"><%= @test_passage.result %>%</span></p>
+      <p>Тест провален!</p>
+  <% end %>
+
+  <%= link_to 'List tests', :root %>

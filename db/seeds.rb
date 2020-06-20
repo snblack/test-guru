@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-TestsUser.delete_all
 Report.delete_all
 Answer.delete_all
 Question.delete_all
@@ -55,11 +54,11 @@ Answer.create(body: '2019', correct: true, question_id: question5.id)
 Answer.create(body: '1515', correct: false, question_id: question5.id)
 Answer.create(body: '2001', correct: false, question_id: question5.id)
 
-TestsUser.create(test_id: test1.id, user_id: user1.id)
-TestsUser.create(test_id: test2.id, user_id: user1.id)
-
-TestsUser.create(test_id: test4.id, user_id: user2.id)
-TestsUser.create(test_id: test5.id, user_id: user2.id)
+# TestsUser.create(test_id: test1.id, user_id: user1.id)
+# TestsUser.create(test_id: test2.id, user_id: user1.id)
+#
+# TestsUser.create(test_id: test4.id, user_id: user2.id)
+# TestsUser.create(test_id: test5.id, user_id: user2.id)
 
 # test1.users.push(user1)
 # test2.users.push(user2)
