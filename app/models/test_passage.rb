@@ -7,6 +7,8 @@ class TestPassage < ApplicationRecord
   before_validation :before_validation_set_num_question, on: :create
   before_update :before_update_set_next_question
 
+  SUCCESS_LEVEL = 85
+
   def completed?
     current_question.nil?
   end
@@ -24,6 +26,10 @@ class TestPassage < ApplicationRecord
   def result
     result = self.correct_questions.to_f / test.questions.count.to_f
     (result * 100).to_i
+  end
+
+  def success?
+    self.result >= SUCCESS_LEVEL
   end
 
   private
