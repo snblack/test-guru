@@ -11,6 +11,7 @@ Question.delete_all
 Test.delete_all
 Category.delete_all
 User.delete_all
+TestPassage.delete_all
 
 cat1 = Category.create(title: 'Программирование')
 cat2 = Category.create(title: 'Биология')
