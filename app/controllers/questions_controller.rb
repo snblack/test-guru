@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   # /tests/:test_id/questions(.:format)
-
+  before_action :authenticate_user!
   before_action :find_test, only: %i[index create]
 
   def index
