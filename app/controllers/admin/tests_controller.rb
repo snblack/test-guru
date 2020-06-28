@@ -21,7 +21,7 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def create
-    @test = Test.new(test_params)
+    @test = current_user.tests.new(test_params)
     @test.author = current_user
 
     if @test.save
@@ -42,17 +42,13 @@ class Admin::TestsController < Admin::BaseController
 
   def destroy
     @test.destroy
-    redirect_to tests_path
+    redirect_to admin_tests_path
   end
 
   private
 
   def set_test
     @test = Test.find(params['id'])
-  end
-
-  def set_user
-    @user = User.first
   end
 
   def test_params

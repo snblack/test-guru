@@ -1,37 +1,35 @@
 class Admin::QuestionsController < Admin::BaseController
   # /tests/:test_id/questions(.:format)
   before_action :authenticate_user!
-  before_action :find_test, only: %i[index create]
+  before_action :find_test, only: %i[index create new]
+  before_action :find_question, only: %i[edit update show destroy]
 
   def index
     @questions = @test.questions
   end
   # /questions/:id(.:format)
   def show
-    find_question
+
   end
 
   def new
-    find_test
-    @question = Question.new
+    @question = @test.questions.new
   end
 
   def edit
-    find_question
+
   end
 
   def create
     question = @test.questions.new(question_params)
     if question.save
-      redirect_to question
+      redirect_to admin_question_path(question)
     else
       render :new
     end
   end
 
   def update
-    find_question
-
     if @question.update(question_params)
       redirect_to @question
     else
@@ -40,16 +38,15 @@ class Admin::QuestionsController < Admin::BaseController
   end
 
   def destroy
-    find_question
     @test_id = @question.test_id
     @question.destroy
-    redirect_to "/tests/#{@test_id}"
+    redirect_to admin_test_path(@question.test)
   end
 
   private
 
   def question_params
-    params.require(:question).permit(:body)
+    params.permit(:body)
   end
 
   def find_test
