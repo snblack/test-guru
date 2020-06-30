@@ -2,4 +2,4 @@
 <p><%=@question.body%></p>
 <p><%= link_to("Edit", "/questions/#{@question.id}/edit", method: :get) %></p>
 <p><%= link_to("Delete", "/questions/#{@question.id}", method: :delete) %></p>
-<p><%= link_to("Back", "/tests/#{@question.test_id}") %></p>
+<p><%= link_to("Back", admin_test_path(@question.test) %></p>
