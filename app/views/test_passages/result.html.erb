@@ -1,4 +1,4 @@
-<h1> The <%=  @test_passage.test.title %> Test was Competed!</h1>
+<h1> The <%= t(".header", title: @test_passage.test.title) %> </h1>
 
   <% if @test_passage.success? %>
     <p> Ваш результат: <span class="result_green"><%= @test_passage.result %>%</span></p>
@@ -7,5 +7,5 @@
         <p> Ваш результат: <span class="result_red"><%= @test_passage.result %>%</span></p>
         <p>Тест провален!</p>
   <% end %>
-  
+
   <%= link_to 'List tests', :root %>

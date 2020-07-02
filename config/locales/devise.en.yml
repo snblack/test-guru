@@ -2,10 +2,22 @@
 
 en:
   devise:
+    link_to:
+      log_in: "Log in"
+      sign_up: "Sign up"
+      forgot_password: "Forgot your password?"
+      did_not_receive_confirm_instr: "Didn't receive confirmation instructions?"
+      did_not_receive_unlock_instr: "Didn't receive unlock instructions?"
+    submit:
+      enter: "Enter"
+      sign_up: "Sign up"
+    new:
+      header: "Enter the Guru gates"
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      instructions: "Resend confirmation instructions"
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account is not activated yet."
