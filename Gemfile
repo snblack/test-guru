@@ -28,6 +28,9 @@ gem 'devise', '~> 4.0'
 
 gem 'rails-i18n', '~> 6.0.0'
 
+# css
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.5.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
