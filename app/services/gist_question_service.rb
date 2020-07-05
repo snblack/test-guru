@@ -11,6 +11,10 @@ class GistQuestionService
     @client.create_gist(gist_params)
   end
 
+  def success?
+    @client.last_response.present?
+  end
+
   private
 
   def gist_params
@@ -29,5 +33,6 @@ class GistQuestionService
     content += @question.answers.pluck(:doby)
     content.join("\n")
   end
+
 
 end
