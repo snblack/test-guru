@@ -49,6 +49,9 @@ ru:
   test_passages:
     result:
       header: "Тест %{title} успешно завершен"
+    gist:
+      success: "Gist успешно сохранен. Ссылка: %{url}"
+      failure: "Во время сохранения Gist произошла ошибка"
 
   admin:
     tests:
@@ -60,3 +63,13 @@ ru:
   tests_mailer:
     completed_test:
       subject: "Вы успешно завершили тест на TestGuru"
+
+  gist:
+    params:
+      description: "Вопрос о %{title} из TestGuru"
+    index:
+      header: "Все Gists"
+      title: "Вопрос"
+      url: "Ссылка на Gist"
+      user: "Пользователь"
+      show: "Посмотреть Gist"

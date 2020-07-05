@@ -1,0 +1,24 @@
+<div class="row justify-content-center mt-3">
+  <div class="col col-md-6">
+    <h2><%= t('gist.index.header')%></h2>
+
+    <table class="table mt-3">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col"> <%= t('gist.index.title') %></th>
+          <th scope="col"> <%= t('gist.index.url') %></th>
+          <th scope="col"> <%= t('gist.index.user') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <%= render @gists %>
+        </tr>
+      </tbody>
+    </table>
+
+    <div row>
+      <%= link_to t('common.back'), admin_tests_path, class: 'btn btn-link'  %>
+    </div>
+  </div>
+</div>
