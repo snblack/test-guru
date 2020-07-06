@@ -78,6 +78,9 @@ en:
   test_passages:
     result:
       header: "The %{title} Test was completed"
+    gist:
+      success: "Gist was successfully created! Link: %{url}"
+      failure: "AN error occured while saving gist"
 
   admin:
     tests:
@@ -89,3 +92,13 @@ en:
   tests_mailer:
     completed_test:
       subject: "You just completed the TestGuru test!"
+
+  gist:
+    params:
+      description: "A question about %{title} from TestGuru"
+    index:
+      header: "All Gists"
+      title: "Question"
+      url: "Gist URL"
+      user: "User"
+      show: "Show Gist"

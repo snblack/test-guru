@@ -14,6 +14,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  has_many :gists
   has_many :tests_created_author, class_name: "Test"
   has_many :test_passages
   has_many :tests, through: :test_passages
