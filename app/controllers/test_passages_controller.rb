@@ -14,13 +14,14 @@ class TestPassagesController < ApplicationController
   def gist
     result = GistQuestionService.new(@test_passage.current_question)
     gis = result.call
-    flash_options = if result.success?
-      { notice: t('.success', url: gis.html_url) }
+    if result.success?
+      flash_options = { notice: t('.success', url: gis.html_url) }
+      gist = @test_passage.user.gists.create(question: @test_passage.current_question, url: gis.html_url)
     else
       { alert: t('.failure') }
     end
 
-    gist = @test_passage.user.gists.new(question: @test_passage.current_question, url: gis.html_url)
+
     redirect_to @test_passage, flash_options
   end
 
