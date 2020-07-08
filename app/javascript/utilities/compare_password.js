@@ -10,9 +10,12 @@ function comparePassword() {
   var password2 = document.querySelector('input#user_password_confirmation').value
 
   if (password1 == "") {
-  } else if (password1 != password2) {
+    return;
+  }
+
+  if (password1 != password2) {
     document.querySelector('svg#failure').classList.remove('hide')
-  } else if (password1 == password2 ) {
+  } else {
     document.querySelector('svg#success').classList.remove('hide')
   }
 }
