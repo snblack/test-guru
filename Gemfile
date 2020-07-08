@@ -37,6 +37,9 @@ gem 'faraday'
 #клиент от GITHUB
 gem "octokit", "~> 4.0"
 
+#иконки
+gem 'octicons_helper'
+
 #хранение пароле на GITHUB
 gem 'dotenv-rails', groups: [:development, :test]
 

@@ -2,9 +2,12 @@
   <div class="row pl-3">
     <%= link_to 'TestGuru', root_path, class: 'navbar-brand' %>
 
-    <% if current_user.admin? %>
-      <%= link_to 'Admin Panel', admin_tests_path, class: 'navbar-brand' %>
-    <% end%>
+    <% begin %>
+      <% if current_user.admin?%>
+        <%= link_to 'Admin Panel', admin_tests_path, class: 'navbar-brand' %>
+      <% end%>
+    <% rescue %>  
+    <% end %>
   </div>
 
 
