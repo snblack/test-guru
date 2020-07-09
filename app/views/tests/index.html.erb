@@ -5,15 +5,17 @@
     <table class="table mt-3">
       <thead class="thead-light">
         <tr>
-          <th scope='col'><%= t('common.title') %></th>
+          <th scope='col' class="sort-by-title pointer">
+            <%= t('common.title') %>
+            <%= octicon 'arrow-up', class: 'text-success hide' %>
+            <%= octicon 'arrow-down', class: 'text-success hide' %>
+          </th>
           <th scope='col'><%= t('tests.index.questions') %></th>
           <th scope='col'><%= t('common.actions') %></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-            <%= render @tests %>
-        </tr>
+          <%= render @tests %>
       </tbody>
 
 
