@@ -17,7 +17,7 @@ class Admin::QuestionsController < Admin::BaseController
   end
 
   def edit
-
+    @test = @question.test
   end
 
   def create
