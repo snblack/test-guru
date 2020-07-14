@@ -31,7 +31,7 @@ gem 'rails-i18n', '~> 6.0.0'
 # css
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.5.0'
-gem 'popper_js', '~> 1.14.5'
+gem 'popper_js'
 
 #API
 gem 'faraday'
