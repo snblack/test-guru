@@ -3,7 +3,7 @@ class Answer < ApplicationRecord
 
   scope :correct, -> {where(correct: true)}
   validates :body, presence: true
-  validate :validate_quantity
+  # validate :validate_quantity
 
   def validate_quantity
     if !(0..3).include?(self.question.answers.count)
