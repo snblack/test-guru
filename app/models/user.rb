@@ -11,8 +11,6 @@ class User < ApplicationRecord
 
   validates_format_of :email, :with => /@/
   validates :email, presence: true, uniqueness: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
 
   has_many :gists
   has_many :tests_created_author, class_name: "Test"
