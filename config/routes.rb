@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resource :users, only: :create
   resource :sessions, only: :create
+  resource :feedback
 
   resources :tests, only: :index do
     resources :questions, shallow: true, except: :index do
