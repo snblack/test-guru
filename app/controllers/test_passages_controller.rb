@@ -4,7 +4,9 @@ class TestPassagesController < ApplicationController
   before_action :set_test_passage, only: %i[show update result gist]
 
   def show
-
+    if @test_passage.test.questions.count == 0
+      redirect_to root_path, notice: ("У теста нет вопросов. Выберите другой.")
+    end
   end
 
   def result

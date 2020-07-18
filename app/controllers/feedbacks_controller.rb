@@ -6,11 +6,11 @@ class FeedbacksController < ApplicationController
   def create
     feedback = Feedback.new(feedback_params)
 
-    if feedback.save!
-      redirect_to root_path, notice: t("Успешно создан")
+    if feedback.save
+      redirect_to root_path, notice: ("Успешно создан")
       FeedbackMailer.sended_feedback.deliver_now
     else
-      render :new
+      redirect_to new_feedback_path, notice: ("#{feedback.errors.full_messages }")
     end
   end
 

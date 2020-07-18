@@ -1,4 +1,5 @@
-<%= form_with model: [@feedback], url: feedback_path, local: true do |form| %>
+<%= form_with model: @feedback, url: feedback_path, local: true do |form| %>
+<%= render 'shared/errors', resource: @feedback %>
 
 <p>
   <%= form.label :title %> <br>
