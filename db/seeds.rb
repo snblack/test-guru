@@ -21,6 +21,7 @@ cat5 = Category.create(title: 'Статистика')
 
 user1 = User.create(first_name: 'Татьяна', last_name: 'Трубчик')
 user2 = User.create(first_name: 'Александр', last_name: 'Черняк')
+user2 = Admin.create(first_name: 'Александр', last_name: 'Черняк', email: 'snblack06@gmail.com', password: 'koracell')
 
 test1 = Test.create(title: 'Ruby Start', level: 1, category_id: cat1.id, user_id: user1.id)
 test2 = Test.create(title: 'Ruby Basic', level: 2, category_id: cat2.id, user_id: user1.id)
