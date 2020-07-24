@@ -19,8 +19,6 @@ cat3 = Category.create(title: 'Физика')
 cat4 = Category.create(title: 'История')
 cat5 = Category.create(title: 'Статистика')
 
-user1 = User.create(first_name: 'Татьяна', last_name: 'Трубчик')
-user2 = User.create(first_name: 'Александр', last_name: 'Черняк')
 user2 = Admin.create(first_name: 'Александр', last_name: 'Черняк', email: 'snblack06@gmail.com', password: 'koracell')
 
 test1 = Test.create(title: 'Ruby Start', level: 1, category_id: cat1.id, user_id: user1.id)
@@ -55,6 +53,17 @@ Answer.create(body: '1915', correct: false, question_id: question4.id)
 Answer.create(body: '2019', correct: true, question_id: question5.id)
 Answer.create(body: '1515', correct: false, question_id: question5.id)
 Answer.create(body: '2001', correct: false, question_id: question5.id)
+
+rule1 = Rule.create(title: 'all_test_by_programm', body: 'Выдать бэйдж после успешного прохождения всех тестов из категории Программирование')
+rule2 = Rule.create(title: 'first_attempt', body: 'Выдать бэйдж после успешного прохождения теста с первой попытки')
+rule3 = Rule.create(title: 'all_test_level', body: 'Выдать бэйдж после успешного прохождения всех тестов определённого уровня')
+
+badge1 = Badge.create(title: 'Прошел все тесты по прагроммированию', url: 'image.png', rule_id: rule1.id)
+badge2 = Badge.create(title: 'Прошел тест с первой попытки', url: 'image1.png', rule_id: rule2.id)
+badge3 = Badge.create(title: 'Прошел все тесты уровня', url: 'image2.png', rule_id: rule3.id)
+
+
+Badge.create()
 
 # TestsUser.create(test_id: test1.id, user_id: user1.id)
 # TestsUser.create(test_id: test2.id, user_id: user1.id)

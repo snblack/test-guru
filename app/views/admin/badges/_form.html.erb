@@ -1,0 +1,29 @@
+<div class="row mt-3">
+  <div class="col col-md-6">
+
+
+    <div class="card-body">
+      <%= form_with model: [:admin, @badge], local: true do |form| %>
+      <%= render 'shared/errors', resource: @badge %>
+      <div class="form-group">
+        <p>
+          <%= form.label :title %> <br>
+          <%= form.text_field :title, id: :badge_title, class: 'form-control' %> <br>
+        </p>
+
+        <p>
+          <%= form.label :url %> <br>
+          <%= form.text_field :url, id: :badge_url, class: 'form-control' %> <br>
+        </p>
+
+        <p class="dropdown">
+          <%= form.label :rule_id %> <br>
+          <%= form.collection_select :rule_id, Rule.all, :id, :title, promt: true %> <br>
+        </p>
+
+        <p><%=form.submit class: 'btn btn-primary mt-3'%></p>
+      </div>
+      <%end%>
+    </div>
+  </div>
+</div>

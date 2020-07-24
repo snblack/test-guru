@@ -17,6 +17,9 @@ class User < ApplicationRecord
   has_many :test_passages
   has_many :tests, through: :test_passages
 
+  has_many :badge_owners
+  has_many :badges, through: :badge_owners
+
   def tests_with_level(level)
     tests.where(level: level)
   end
@@ -27,6 +30,10 @@ class User < ApplicationRecord
 
   def admin?
     self.class == Admin
+  end
+
+  def get_badge(badge)
+    self.badge_owners.create(badge_id: Badge.find_by(title: badge).id)
   end
 
 end

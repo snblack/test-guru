@@ -36,7 +36,26 @@ class TestPassage < ApplicationRecord
     ((self.num_question.to_f - 1) / self.test.questions.count.to_f) * 100
   end
 
+  def check_badge
+    need_badge_all_test_category?
+  end
+
+
   private
+
+  def need_badge_all_test_category?
+    test_prog = 0
+
+    self.user.tests.map do |test|
+      if test.category.title  == "Программирование"
+        test_prog += 1
+      end
+    end
+
+    if test_prog == Test.all.where(category_id: Category.find_by(title: 'Программирование').id).count
+      self.user.get_badge("Прошел все тесты по прогроммированию")
+    end
+  end
 
   def before_validation_set_first_question
     self.current_question = test.questions.first if test.present?
