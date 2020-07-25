@@ -44,15 +44,15 @@ class TestPassage < ApplicationRecord
   private
 
   def need_badge_all_test_category?
-    test_prog = 0
+    @test_prog = 0
 
     self.user.tests.map do |test|
       if test.category.title  == "Программирование"
-        test_prog += 1
+        @test_prog += 1
       end
     end
 
-    if test_prog == Test.all.where(category_id: Category.find_by(title: 'Программирование').id).count
+    if @test_prog == Test.all.where(category_id: Category.find_by(title: 'Программирование').id).count
       self.user.get_badge("Прошел все тесты по прогроммированию")
     end
   end
