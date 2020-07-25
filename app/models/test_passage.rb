@@ -39,6 +39,7 @@ class TestPassage < ApplicationRecord
   def check_badge
     need_badge_all_test_category?
     need_badge_all_test_level?
+    need_badge_test_first_attempt?
   end
 
 
@@ -69,6 +70,19 @@ class TestPassage < ApplicationRecord
 
     if test_level == Test.all.where(level: self.test.level).count
       self.user.get_badge("Прошел все тесты уровня")
+    end
+  end
+
+  def need_badge_test_first_attempt?
+    test_attempt = 0
+    self.user.test_passages.map do |test_passage|
+      if test_passage.test_id  == self.test_id
+        test_attempt += 1
+      end
+    end
+
+    if test_attempt == 1
+      self.user.get_badge("Прошел тест с первой попытки")
     end
   end
 
