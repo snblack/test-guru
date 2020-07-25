@@ -58,7 +58,7 @@ rule1 = Rule.create(title: 'all_test_by_programm', body: 'Выдать бэйд�
 rule2 = Rule.create(title: 'first_attempt', body: 'Выдать бэйдж после успешного прохождения теста с первой попытки')
 rule3 = Rule.create(title: 'all_test_level', body: 'Выдать бэйдж после успешного прохождения всех тестов определённого уровня')
 
-badge1 = Badge.create(title: 'Прошел все тесты по прагроммированию', url: 'image.png', rule_id: rule1.id)
+badge1 = Badge.create(title: 'Прошел все тесты по прогроммированию', url: 'image.png', rule_id: rule1.id)
 badge2 = Badge.create(title: 'Прошел тест с первой попытки', url: 'image1.png', rule_id: rule2.id)
 badge3 = Badge.create(title: 'Прошел все тесты уровня', url: 'image2.png', rule_id: rule3.id)
 
