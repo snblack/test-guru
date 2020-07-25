@@ -47,8 +47,8 @@ class TestPassage < ApplicationRecord
   def need_badge_all_test_category?
     test_prog = 0
 
-    self.user.tests.map do |test|
-      if test.category.title  == "Программирование"
+    self.user.test_passages.map do |test_passage|
+      if test_passage.test.category.title  == "Программирование" && test_passage.success?
         test_prog += 1
       end
     end
@@ -61,8 +61,8 @@ class TestPassage < ApplicationRecord
   def need_badge_all_test_level?
     test_level = 0
 
-    self.user.tests.map do |test|
-      if test.level  == self.test.level
+    self.user.test_passages.map do |test_passage|
+      if test_passage.test.level  == self.test.level && test_passage.success?
         test_level += 1
       end
     end
