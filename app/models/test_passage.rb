@@ -38,22 +38,37 @@ class TestPassage < ApplicationRecord
 
   def check_badge
     need_badge_all_test_category?
+    need_badge_all_test_level?
   end
 
 
   private
 
   def need_badge_all_test_category?
-    @test_prog = 0
+    test_prog = 0
 
     self.user.tests.map do |test|
       if test.category.title  == "Программирование"
-        @test_prog += 1
+        test_prog += 1
       end
     end
 
-    if @test_prog == Test.all.where(category_id: Category.find_by(title: 'Программирование').id).count
+    if test_prog == Test.all.where(category_id: Category.find_by(title: 'Программирование').id).count
       self.user.get_badge("Прошел все тесты по прогроммированию")
+    end
+  end
+
+  def need_badge_all_test_level?
+    test_level = 0
+
+    self.user.tests.map do |test|
+      if test.level  == self.test.level
+        test_level += 1
+      end
+    end
+
+    if test_level == Test.all.where(level: self.test.level).count
+      self.user.get_badge("Прошел все тесты уровня")
     end
   end
 
