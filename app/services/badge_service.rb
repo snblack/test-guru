@@ -13,8 +13,11 @@ class BadgeService
   end
 
   def all_test_from_programm_award?(category)
-    user_tests = @test_passage.user.tests.where(category_id: Category.find_by(title: category))
-    all_tests_from_programm = Test.all.where(category_id: Category.find_by(title: category))
+    user_tests = @test_passage.user.tests.
+                                joins('JOIN categories ON categories.id = tests.category_id').
+                                where("categories.title = :category", category: category)
+
+    all_tests_from_programm = Test.all.where(category_id: category)
 
     user_tests == all_tests_from_programm
   end
