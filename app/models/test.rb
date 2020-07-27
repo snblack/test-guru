@@ -21,10 +21,9 @@ class Test < ApplicationRecord
   scope :join_categories, -> {
     joins('JOIN categories ON categories.id = tests.category_id')
   }
-  
+
    def self.of_category(category)
      Test.join_categories.
-          where("categories.title = :category", category: category).
-          order('tests.title DESC').pluck(:title)
+          where("categories.title = :category", category: category)
     end
 end
