@@ -16,6 +16,11 @@
         <%= form.number_field :level, id: :test_level, class: 'form-control' %> <br>
       </p>
 
+      <p>
+        <%= form.label :timer %> <br>
+        <%= form.number_field :timer, id: :test_timer, class: 'form-control' %> <br>
+      </p>
+
       <p class="dropdown">
         <%= form.label :category_id %> <br>
         <%= form.collection_select :category_id, Category.all, :id, :title, promt: true %> <br>
