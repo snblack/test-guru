@@ -10,7 +10,13 @@ class TestPassagesController < ApplicationController
   end
 
   def result
-    if @test_passage.success?
+    time_sec = @test_passage.updated_at - @test_passage.created_at
+
+    if time_sec > @test_passage.test.timer - 13
+      @test_passage.correct_questions = 0
+      redirect_to root_path, notice: ("Таймер нарушен")
+    elsif
+      @test_passage.success?
       result = BadgeService.new(@test_passage)
       result.check_badge
     end

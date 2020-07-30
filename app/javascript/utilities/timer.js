@@ -3,7 +3,7 @@ document.addEventListener('turbolinks:load', function() {
   var timer = document.querySelector('div.timer_class').dataset.timer
   // var timer_int = Number(timer)
   if (timer) {
-    var countDownDate = new Date().getTime() + (1000 * timer) ;
+    var countDownDate = new Date().getTime() + (60000 * timer) ;
 
     // Update the count down every 1 second
     var x = setInterval(function() {
