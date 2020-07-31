@@ -6,6 +6,7 @@ class TestPassage < ApplicationRecord
   before_validation :before_validation_set_first_question, on: :create
   before_validation :before_validation_set_num_question, on: :create
   before_update :before_update_set_next_question
+  before_update :before_update_check_timer
 
   SUCCESS_LEVEL = 85
 
@@ -49,6 +50,14 @@ class TestPassage < ApplicationRecord
 
   def before_update_set_next_question
     self.current_question = next_question
+  end
+
+  def before_update_check_timer
+    time_sec = self.updated_at - self.created_at
+    # if time_sec > self.test.timer - 13
+    if time_sec > 0
+      self.errors.add(:timer, "Таймер нарушен")
+    end
   end
 
   def correct_answer?(answer_ids)

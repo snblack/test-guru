@@ -2,6 +2,7 @@ class TestPassagesController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_test_passage, only: %i[show update result gist]
+  after_action :check_timer, only: %i[show]
 
   def show
     if @test_passage.test.questions.count == 0
@@ -10,13 +11,8 @@ class TestPassagesController < ApplicationController
   end
 
   def result
-    time_sec = @test_passage.updated_at - @test_passage.created_at
 
-    if time_sec > @test_passage.test.timer - 13
-      @test_passage.correct_questions = 0
-      redirect_to root_path, notice: ("Таймер нарушен")
-    elsif
-      @test_passage.success?
+    if @test_passage.success?
       result = BadgeService.new(@test_passage)
       result.check_badge
     end
@@ -51,6 +47,12 @@ class TestPassagesController < ApplicationController
 
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
+  end
+
+  def check_timer
+    if @test_passage.errors.present?
+      redirect_to root_path, notice: ("Ошибка таймера")
+    end
   end
 
 end
