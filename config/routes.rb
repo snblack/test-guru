@@ -12,9 +12,12 @@ Rails.application.routes.draw do
   get :login, to: 'sessions#new'
   delete :logout, to: 'sessions#destroy'
 
-  resource :users, only: :create
+  resource :users, only: :create do
+    resources :badges
+  end
   resource :sessions, only: :create
   resource :feedback
+
 
   resources :tests, only: :index do
     resources :questions, shallow: true, except: :index do
@@ -42,6 +45,7 @@ Rails.application.routes.draw do
       end
     end
     resources :gists, only: %i[index]
+    resources :badges
   end
 
 

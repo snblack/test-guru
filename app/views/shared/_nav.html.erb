@@ -1,6 +1,11 @@
 <nav class="navbar navbar-light bg-light">
   <div class="row pl-3">
     <%= link_to 'TestGuru', root_path, class: 'navbar-brand' %>
+    <% if user_signed_in? %>
+      <%= link_to 'Badges', users_badges_path, class: 'navbar-brand' %>
+    <% end %>
+
+
 
     <% begin %>
       <% if current_user.admin?%>

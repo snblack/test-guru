@@ -24,7 +24,6 @@ class Test < ApplicationRecord
 
    def self.of_category(category)
      Test.join_categories.
-          where("categories.title = :category", category: category).
-          order('tests.title DESC').pluck(:title)
+          where("categories.title = :category", category: category)
     end
 end

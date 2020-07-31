@@ -10,7 +10,10 @@ class TestPassagesController < ApplicationController
   end
 
   def result
-
+    if @test_passage.success?
+      result = BadgeService.new(@test_passage)
+      result.check_badge
+    end
   end
 
   def gist

@@ -1,0 +1,27 @@
+<div class="row justify-content-center mt-3">
+  <div class="col col-md-6">
+    <h2><%= ('Badges')%></h2>
+
+    <table class="table mt-3">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col"> Название Badge</th>
+          <th scope="col"> Правила получения Badge</th>
+          <th scope="col"> Ссылка на Badge</th>
+          <th scope="col" colspan="2"><%= t('common.actions') %></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <%= render @badges %>
+        </tr>
+      </tbody>
+    </table>
+
+    <div row>
+      <%= link_to t('common.back'), admin_tests_path, class: 'btn btn-link'  %>
+      <%= link_to 'Создать Badge', new_admin_badge_path, class: 'btn btn-link'  %>
+    </div>
+  </div>
+</div>
