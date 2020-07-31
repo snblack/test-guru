@@ -54,8 +54,7 @@ class TestPassage < ApplicationRecord
 
   def before_update_check_timer
     time_sec = self.updated_at - self.created_at
-    # if time_sec > self.test.timer - 13
-    if time_sec > 0
+    if time_sec > self.test.timer * 60000
       self.errors.add(:timer, "Таймер нарушен")
     end
   end
