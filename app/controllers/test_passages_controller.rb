@@ -2,7 +2,6 @@ class TestPassagesController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_test_passage, only: %i[show update result gist]
-  after_action :check_timer, only: %i[show]
 
   def show
     if @test_passage.test.questions.count == 0
@@ -35,7 +34,9 @@ class TestPassagesController < ApplicationController
   def update
     @test_passage.accept!(params[:answers_ids])
 
-    if @test_passage.completed?
+    if @test_passage.timeout?
+      redirect_to root_path, notice: ("Ошибка таймера")
+    elsif @test_passage.completed?
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
     else
@@ -47,12 +48,6 @@ class TestPassagesController < ApplicationController
 
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
-  end
-
-  def check_timer
-    if @test_passage.errors.present?
-      redirect_to root_path, notice: ("Ошибка таймера")
-    end
   end
 
 end
