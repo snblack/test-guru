@@ -34,9 +34,7 @@ class TestPassagesController < ApplicationController
   def update
     @test_passage.accept!(params[:answers_ids])
 
-    if @test_passage.timeout?
-      redirect_to root_path, notice: ("Ошибка таймера")
-    elsif @test_passage.completed?
+    if @test_passage.completed? || @test_passage.timeout?
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
     else
