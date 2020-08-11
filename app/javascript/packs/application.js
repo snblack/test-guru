@@ -10,6 +10,9 @@ require("channels")
 require("utilities/sorting")
 require("utilities/compare_password")
 require("utilities/form_inline")
+require("utilities/timer")
+require("utilities/remove_history")
+
 
 //= require jquery3
 //= require jquery_ujs

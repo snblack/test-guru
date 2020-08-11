@@ -33,6 +33,8 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.5.0'
 gem 'popper_js'
 
+# Timer обратного отсчет
+
 #API
 gem 'faraday'
 #клиент от GITHUB

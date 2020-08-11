@@ -36,6 +36,13 @@ class TestPassage < ApplicationRecord
     ((self.num_question.to_f - 1) / self.test.questions.count.to_f) * 100
   end
 
+  def timeout?
+    time_sec = self.updated_at - self.created_at
+
+    if time_sec > self.test.timer * 60000
+      true
+    end
+  end
 
   private
 

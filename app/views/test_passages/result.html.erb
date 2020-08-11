@@ -1,10 +1,10 @@
 <h1> The <%= t(".header", title: @test_passage.test.title) %> </h1>
 
   <% if @test_passage.success? %>
-    <p> Ваш результат: <span class="result_green"><%= @test_passage.result %>%</span></p>
+    <p id="result"> Ваш результат: <span class="result_green"><%= @test_passage.result %>%</span></p>
     <p>Тест пройден успешно</p>
   <% else %>
-        <p> Ваш результат: <span class="result_red"><%= @test_passage.result %>%</span></p>
+        <p id="result"> Ваш результат: <span class="result_red"><%= @test_passage.result %>%</span></p>
         <p>Тест провален!</p>
   <% end %>
 
